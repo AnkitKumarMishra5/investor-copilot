@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-ink antialiased;
+}
+
+.markdown :where(p, ul, ol, table, pre, blockquote):not(:last-child) {
+  @apply mb-3;
+}
+.markdown ul {
+  @apply list-disc pl-5 space-y-1;
+}
+.markdown ol {
+  @apply list-decimal pl-5 space-y-1;
+}
+.markdown strong {
+  @apply font-semibold text-ink;
+}
+.markdown table {
+  @apply w-full text-sm border-collapse;
+}
+.markdown th,
+.markdown td {
+  @apply border border-slate-200 px-2 py-1 text-left;
+}
+.markdown th {
+  @apply bg-slate-100 font-semibold;
+}
+.markdown code {
+  @apply rounded bg-slate-100 px-1 py-0.5 text-[0.85em] font-mono;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  @apply font-semibold mb-2;
+}
+.markdown a {
+  @apply text-accent underline;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes shimmer-ltr {
+    0% {
+      background-position: 200% center;
+    }
+    100% {
+      background-position: -200% center;
+    }
+  }
+
+  @keyframes typing-bounce {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.35;
+    }
+    30% {
+      transform: translateY(-3px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .thinking-shimmer-ltr {
+    background: linear-gradient(
+      90deg,
+      #64748b 0%,
+      #64748b 35%,
+      #0f172a 50%,
+      #64748b 65%,
+      #64748b 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-ltr 2.2s linear infinite;
+  }
+
+  .typing-dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background-color: #94a3b8;
+    animation: typing-bounce 1.2s ease-in-out infinite;
+  }
+
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .thinking-step-done {
+    animation: fade-in 0.2s ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thinking-shimmer-ltr {
+    color: #475569;
+    background: none;
+  }
+
+  .typing-dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background-color: #94a3b8;
+  }
+}
